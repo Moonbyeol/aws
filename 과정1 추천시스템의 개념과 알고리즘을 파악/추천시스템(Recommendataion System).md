@@ -5,14 +5,10 @@
 # 2. 추천시스템 목표
 
 
-
 # 3. 응용 분야(5개 이상)
 
 
 # 4. 사례(국내 주요 사이트 3개 이상)
-
-
-
 
 
 # 5. 알고리즘
@@ -21,4 +17,5 @@
 ## 3) 콘텐츠 기반 필터링 (Content-Based Filtering)
 ## 4) 협업 필터링 (Collaborative Filtering)
 ## 5) 행렬 분해 (Matrix Factorization)
-## 
+## 6) 하이브리드 방법 (Hybrid Methods)
+## 7) 딥러닝 기반의 추천 (Deep Learning)
