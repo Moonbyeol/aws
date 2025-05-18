@@ -126,7 +126,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- target database endpoint : s3-target-endpoint
 	- mygration type : CDC
 	- task 설정
-		- 대부분 기본값
+		- 시작 모드, 시작 시점 설정 필요
 		- 데이터 검증 - 필요시
 		- 테스크 로그 - 필요시
 	- table mappings
