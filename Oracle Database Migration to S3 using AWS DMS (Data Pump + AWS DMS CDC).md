@@ -131,4 +131,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 		- 테스크 로그 - 필요시
 	- table mappings
 		- 새 선택 규칙 추가
-		- 
+			- 스키마 입력 클릭
+			- schema name : % (전체 선택 의미)
+			- table name : % (전체 선택 의미, 다른 것들은 [참고](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.SelectionTransformation.Wildcards.html))
+			- include
