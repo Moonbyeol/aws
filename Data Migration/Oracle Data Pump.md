@@ -1,6 +1,4 @@
 
-대용량 데이터 s3에 업로드
-glue나 athena 에서 바로 사용 불가....
 
 # 1. Oracle Data Pump
 
@@ -45,5 +43,16 @@ gzip export_data.dmp
 aws s3 cp export_data.dmp.gz s3://my-bucket/oracle-dumps/
 ```
 - 버킷 경로 확인
+
+
+
+# 문제점
+
+- 대용량 데이터 s3에 업로드
+- glue나 athena 에서 바로 사용 불가....
+- .dmp 파일은 oracle에서만 읽고 복원 가능.....
+	- rds oracle 로 해당 파일 처리
+	- ec2 로 오라클 열어서 s3파일 처리
+	- 대용량 데이터의 경우 dms하는 것 보다 비용 측면에서 더 나을 것인지 고려
 
 
