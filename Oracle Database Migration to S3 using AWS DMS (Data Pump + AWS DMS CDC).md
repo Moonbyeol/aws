@@ -34,9 +34,9 @@ GRANT READ, WRITE ON DIRECTORY DATA_PUMP_DIR TO myuser;
 ## 2) 덤프 파일 생성
 
 ```bash
-expdp myuser/mypassword@ORCL \
-schemas=MYSCHEMA \
-directory=DATA_PUMP_DIR \
-dumpfile=export_data.dmp \
+expdp system/oracle
+schemas=MYSCHEMA
+directory=DATA_PUMP_DIR
+dumpfile=export_data.dmp
 logfile=export_log.log
 ```
