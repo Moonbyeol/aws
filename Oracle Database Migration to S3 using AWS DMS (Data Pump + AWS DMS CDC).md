@@ -129,4 +129,6 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 		- 대부분 기본값
 		- 데이터 검증 - 필요시
 		- 테스크 로그 - 필요시
-	- 
+	- table mappings
+		- 새 선택 규칙 추가
+		- 
