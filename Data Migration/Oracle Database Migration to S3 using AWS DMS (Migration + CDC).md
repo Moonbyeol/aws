@@ -63,7 +63,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- replication instance : 위에서 생성한 인스턴스
 	- source database endpoint : oracle-source-endpoint
 	- target database endpoint : s3-target-endpoint
-	- mygration type : CDC
+	- mygration type : Migration and CDC
 	- task 설정
 		- 시작 모드, 시작 시점 설정 필요
 		- 데이터 검증 - 필요시
@@ -75,6 +75,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 			- table name : % (전체 선택 의미, 다른 것들은 [참고](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.SelectionTransformation.Wildcards.html))
 			- include
 	- 생성
-- task 생성 후 json 모드에서 포맷, 경로 설정 가능
+## 7) 테스트
+
 
 
