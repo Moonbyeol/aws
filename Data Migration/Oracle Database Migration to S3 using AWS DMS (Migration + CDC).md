@@ -14,9 +14,9 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 ### 3-1. 사용자 정의 정책 생성
 - IAM 콘솔
 - 정책 생성
-	- 
+	- 정책 이름 : DMS-S3-MinimalPolicy
 	- json
-	```
+	```json
 	 {
 	"Version": "2012-10-17",
 	"Statement": [
@@ -42,15 +42,30 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	 }
 	]
 	```
+	- CloudWatch Logs 사용하러면 아래 권한 추가
+	```json
+	    {
+	      "Sid": "AllowCloudWatchLogging",
+	      "Effect": "Allow",
+	      "Action": [
+	        "logs:CreateLogGroup",
+	        "logs:CreateLogStream",
+	        "logs:PutLogEvents"
+	      ],
+	      "Resource": [
+	        "arn:aws:logs:*:*:log-group:/aws/dms/*"
+	      ]
+	    }
+	```
 
-
+### 3-2 역할 생성
 - IAM 콘솔
 - 역할 생성
 	- aws 서비스
 	- 사용 사례 : DMS
 
 	- 권한
-		- AmazonS3FullAccess
+		- DMS-S3-MinimalPolicy
 
 	- 역할 이름 : dms-s3-role
 	- 생성
