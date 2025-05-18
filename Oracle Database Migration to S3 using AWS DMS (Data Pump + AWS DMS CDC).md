@@ -34,9 +34,24 @@ GRANT READ, WRITE ON DIRECTORY DATA_PUMP_DIR TO myuser;
 ## 2) 덤프 파일 생성
 
 ```bash
-expdp system/oracle
-schemas=MYSCHEMA
-directory=DATA_PUMP_DIR
-dumpfile=export_data.dmp
-logfile=export_log.log
+expdp system/oracle \
+directory=DATA_PUMP_DIR \ 
+dumpfile=oracle_full.dmp \
+logfile=oracle_full.log \
+full=y 
 ```
+- expdp : DBA 권한을 가진 계정으로 실행(이이디/비번)
+- full=y : 전체 DB를 대상으로 export
+
+## 3) 파일 압축 (선택)
+
+```bash
+gzip export_data.dmp
+```
+
+## 4) 파일 업로드
+```bash
+aws s3 cp export_data.dmp.gz s3://my-bucket/oracle-dumps/
+```
+- s3://my-bucket/oracle-dumps/ 경로 확인
+
