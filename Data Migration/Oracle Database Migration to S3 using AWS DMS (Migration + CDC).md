@@ -1,9 +1,15 @@
 
+## 1) Oracle DB log 활성화
 
-## 0) 버킷 생성
+```sql
+ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+```
+
+
+## 2) S3 버킷 생성
 - 버킷 생성
 
-## 1) IAM 역할 만들기
+## 3) IAM 역할 만들기
 - IAM 콘솔
 - 역할 생성
 	- aws 서비스
@@ -16,13 +22,7 @@
 	- 생성
 
 
-## 2) Oracle DB log 준비
-
-```sql
-ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
-```
-
-## 3) DMS replication instance 만들기
+## 4) DMS replication instance 만들기
 - DMS 콘솔
 - replication instance 생성
 	- 이름 : oracle-to-s3-replication
@@ -34,7 +34,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 생성
 
 
-## 4) Oracle Endpoint 생성
+## 5) Oracle Endpoint 생성
 - DMS 콘솔
 - Endpoint 생성
 	- endpoint type : Source
@@ -50,7 +50,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 성공 해야 함. 하면 다음으로
 
 
-## 5) S3 Endpoint 생성
+## 6) S3 Endpoint 생성
 - DMS 콘솔
 - Endpoint 생성
 	- endpoint type : target
@@ -60,7 +60,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- IAM role for S3 bucket : Use ana existing IAM role 선택
 	- 위에서 만들었던 IAM role 선택
 
-## 6) Migration Task 생성
+## 7) Migration Task 생성
 - DMS 콘솔
 - Database migration task 생성
 	- 식별자 : oracle-cdc-to-s3-task
@@ -81,12 +81,12 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 마이그레이션 전 평가
 		- 결과 버킷 위치 설정
 	- 생성
-## 7) 테스트
+## 8) 테스트
 
-- 데이터 변경 후 확인
+- 오라클에서 commit 시 dms cdc 로그가 찍히는 지 
 - dms 콘솔
 	- dms task 상태가 `running` 이여야 함
 	- cloudWatch Logs 확인(위에서 켰다면)
-- 
+- S3 버킷 변경 파일 확인
 
 
