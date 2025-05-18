@@ -71,7 +71,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- task 설정
 		- 시작 모드, 시작 시점 설정 필요
 		- 데이터 검증 - 필요시
-		- 테스크 로그 - 필요시
+		- 테스크 로그 - 필요시(비용 발생)
 	- table mappings
 		- 새 선택 규칙 추가
 			- 스키마 입력 클릭
@@ -83,5 +83,10 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 생성
 ## 7) 테스트
 
+- 데이터 변경 후 확인
+- dms 콘솔
+	- dms task 상태가 `running` 이여야 함
+	- cloudWatch Logs 확인(위에서 켰다면)
+- 
 
 
