@@ -12,18 +12,31 @@ Oracle Database의 데이터를 하이브리드 방식으로 진행
 
 # 1. Oracle Data Pump
 
+- Oracle 버전: 10g 이상 (`expdp` 지원)
+- Oracle 계정에 `DBA` 권한 또는 `EXP_FULL_DATABASE` 롤 필요
+- `DIRECTORY` 객체 생성 및 접근 권한 필요
+- S3 업로드를 위한 AWS CLI 설정 (Oracle 서버 또는 별도 머신에서)
 
 
+## 1) directory 객체 생성
 
-## 1) 저장 위치 설정
 
-### 경로 만들기
 ```sql
 mkdir -p /home/oracle/dpump
 ```
-### 경로 지정
+
 ```sql
 CREATE OR REPLACE DIRECTORY DATA_PUMP_DIR AS '/home/oracle/dpump';
 GRANT READ, WRITE ON DIRECTORY DATA_PUMP_DIR TO myuser;
 ```
 
+
+## 2) 덤프 파일 생성
+
+```bash
+expdp myuser/mypassword@ORCL \
+schemas=MYSCHEMA \
+directory=DATA_PUMP_DIR \
+dumpfile=export_data.dmp \
+logfile=export_log.log
+```
