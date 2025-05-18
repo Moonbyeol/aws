@@ -7,7 +7,10 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 - DBA 권한이 부여된 사용자 계정으로 해야 함
 
 ## 2) S3 버킷 생성
+
+![[Pasted image 20250518222848.png]]
 - 버킷 생성
+	- 버킷 이름 : oracle-dms-cdc-bucket
 
 ## 3) IAM 역할 생성 (최소 권한)
 
