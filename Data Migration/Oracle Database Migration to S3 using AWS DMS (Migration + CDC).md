@@ -1,4 +1,8 @@
 
+
+## 0) 버킷 생성
+- 버킷 생성
+
 ## 1) IAM 역할 만들기
 - IAM 콘솔
 - 역할 생성
@@ -74,6 +78,8 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 			- schema name : % (전체 선택 의미)
 			- table name : % (전체 선택 의미, 다른 것들은 [참고](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.SelectionTransformation.Wildcards.html))
 			- include
+	- 마이그레이션 전 평가
+		- 결과 버킷 위치 설정
 	- 생성
 ## 7) 테스트
 
