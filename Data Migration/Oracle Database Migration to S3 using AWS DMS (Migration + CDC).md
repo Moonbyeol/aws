@@ -4,7 +4,7 @@
 ```sql
 ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 ```
-- 
+- DBA 권한이 부여된 사용자 계정으로 해야 함
 
 ## 2) S3 버킷 생성
 - 버킷 생성
