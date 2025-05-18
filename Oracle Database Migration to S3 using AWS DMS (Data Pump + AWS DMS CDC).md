@@ -60,4 +60,22 @@ aws s3 cp export_data.dmp.gz s3://my-bucket/oracle-dumps/
 # DMS CDC
 
 ## 1) IAM 역할 만들기
-- 
+- IAM 콘솔
+- 역할 생성
+	- aws 서비스
+	- 사용 사례 : DMS
+
+	- 권한
+		- AmazonS3FullAccess
+
+	- 역할 이름 : dms-s3-role
+	- 생성
+
+## 2) DMS replication instance 만들기
+- DMS 콘솔
+- replication instance 생성
+	- 이름 : oracle-to-s3-replication
+	- 인스턴스 클래스 : 선택
+	- 스토리지 : 선택
+
+
