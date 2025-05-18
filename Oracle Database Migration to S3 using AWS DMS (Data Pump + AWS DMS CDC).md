@@ -40,7 +40,7 @@ dumpfile=oracle_full.dmp \
 logfile=oracle_full.log \
 full=y 
 ```
-- expdp : DBA 권한을 가진 계정으로 실행(이이디/비번)
+- expdp : DBA 계정 or `EXP_FULL_DATABASE` 롤을 가진 계정으로 실행(이이디/비번)
 - full=y : 전체 DB를 대상으로 export
 
 ## 3) 파일 압축 (선택)
