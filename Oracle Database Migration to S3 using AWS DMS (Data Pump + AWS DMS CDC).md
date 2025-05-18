@@ -110,7 +110,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 ## 5) S3 Endpoint 생성
 - DMS 콘솔
 - Endpoint 생성
-	- endpoint type : Source
+	- endpoint type : target
 	- 식별자 : st-target-endpoint
 	- 소스 엔진 : Amazon S3
 	- Amazon S3 bucket : 버킷 선택
