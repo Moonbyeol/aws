@@ -15,6 +15,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 ## 3) IAM 역할 생성 (최소 권한)
 
 ### 3-1. 사용자 정의 정책 생성
+![[Pasted image 20250518224514.png]]
 - IAM 콘솔
 - 정책 생성
 	- 정책 이름 : DMS-S3-MinimalPolicy
