@@ -16,32 +16,32 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 - 정책 생성
 	- 정책 이름 : DMS-S3-MinimalPolicy
 	- json
-	```json
-	 {
-	"Version": "2012-10-17",
-	"Statement": [
-	 {
-	   "Sid": "S3MinimalAccessForDMS",
-	   "Effect": "Allow",
-	   "Action": [
-	     "s3:PutObject",
-	     "s3:GetObject",
-	     "s3:DeleteObject",
-	     "s3:ListBucket"
-	   ],
-	   "Resource": [
-	     "arn:aws:s3:::oracle-cdc-bucket",
-	     "arn:aws:s3:::oracle-cdc-bucket/*"
-	   ]
-	 },
-	 {
-	   "Sid": "GetBucketLocation",
-	   "Effect": "Allow",
-	   "Action": "s3:GetBucketLocation",
-	   "Resource": "arn:aws:s3:::oracle-cdc-bucket"
-	 }
-	]
-	```
+		```json
+		 {
+		"Version": "2012-10-17",
+		"Statement": [
+		 {
+		   "Sid": "S3MinimalAccessForDMS",
+		   "Effect": "Allow",
+		   "Action": [
+		     "s3:PutObject",
+		     "s3:GetObject",
+		     "s3:DeleteObject",
+		     "s3:ListBucket"
+		   ],
+		   "Resource": [
+		     "arn:aws:s3:::oracle-cdc-bucket",
+		     "arn:aws:s3:::oracle-cdc-bucket/*"
+		   ]
+		 },
+		 {
+		   "Sid": "GetBucketLocation",
+		   "Effect": "Allow",
+		   "Action": "s3:GetBucketLocation",
+		   "Resource": "arn:aws:s3:::oracle-cdc-bucket"
+		 }
+		]
+		```
 	- CloudWatch Logs 사용하러면 아래 권한 추가
 	```json
 	    {
@@ -68,6 +68,21 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 		- DMS-S3-MinimalPolicy
 
 	- 역할 이름 : dms-s3-role
+	- 신뢰 관계
+		```json
+		{
+		  "Version": "2012-10-17",
+		  "Statement": [
+		    {
+		      "Effect": "Allow",
+		      "Principal": {
+		        "Service": "dms.amazonaws.com"
+		      },
+		      "Action": "sts:AssumeRole"
+		    }
+		  ]
+		}
+		```
 	- 생성
 
 
