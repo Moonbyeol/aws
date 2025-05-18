@@ -113,4 +113,6 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- endpoint type : Source
 	- 식별자 : st-target-endpoint
 	- 소스 엔진 : Amazon S3
-	- 
+	- Amazon S3 bucket : 버킷 선택
+	- IAM role for S3 bucket : Use ana existing IAM role 선택
+	- IAM role 선택
