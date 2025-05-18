@@ -4,7 +4,7 @@
 ```sql
 ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 ```
-
+- 
 
 ## 2) S3 버킷 생성
 - 버킷 생성
