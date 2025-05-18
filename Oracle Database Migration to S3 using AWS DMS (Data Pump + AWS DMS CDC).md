@@ -55,3 +55,7 @@ aws s3 cp export_data.dmp.gz s3://my-bucket/oracle-dumps/
 ```
 - s3://my-bucket/oracle-dumps/ 경로 확인
 
+
+
+# DMS CDC
+
