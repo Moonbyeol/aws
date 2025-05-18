@@ -20,46 +20,47 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 정책 이름 : DMS-S3-MinimalPolicy
 	- json
 		```json
-		 {
-		"Version": "2012-10-17",
-		"Statement": [
-		 {
-		   "Sid": "S3MinimalAccessForDMS",
-		   "Effect": "Allow",
-		   "Action": [
-		     "s3:PutObject",
-		     "s3:GetObject",
-		     "s3:DeleteObject",
-		     "s3:ListBucket"
-		   ],
-		   "Resource": [
-		     "arn:aws:s3:::oracle-cdc-bucket",
-		     "arn:aws:s3:::oracle-cdc-bucket/*"
-		   ]
-		 },
-		 {
-		   "Sid": "GetBucketLocation",
-		   "Effect": "Allow",
-		   "Action": "s3:GetBucketLocation",
-		   "Resource": "arn:aws:s3:::oracle-cdc-bucket"
-		 }
-		]
+		{
+		  "Version": "2012-10-17",
+		  "Statement": [
+		    {
+		      "Sid": "S3MinimalAccessForDMS",
+		      "Effect": "Allow",
+		      "Action": [
+		        "s3:PutObject",
+		        "s3:GetObject",
+		        "s3:DeleteObject",
+		        "s3:ListBucket"
+		      ],
+		      "Resource": [
+		        "arn:aws:s3:::oracle-cdc-bucket",
+		        "arn:aws:s3:::oracle-cdc-bucket/*"
+		      ]
+		    },
+		    {
+		      "Sid": "GetBucketLocation",
+		      "Effect": "Allow",
+		      "Action": "s3:GetBucketLocation",
+		      "Resource": "arn:aws:s3:::oracle-cdc-bucket"
+		    }
+		  ]
+		}
 		```
 	- CloudWatch Logs 사용하러면 아래 권한 추가
-	```json
-	    {
-	      "Sid": "AllowCloudWatchLogging",
-	      "Effect": "Allow",
-	      "Action": [
-	        "logs:CreateLogGroup",
-	        "logs:CreateLogStream",
-	        "logs:PutLogEvents"
-	      ],
-	      "Resource": [
-	        "arn:aws:logs:*:*:log-group:/aws/dms/*"
-	      ]
-	    }
-	```
+		```json
+		{
+		  "Sid": "AllowCloudWatchLogging",
+		  "Effect": "Allow",
+		  "Action": [
+			"logs:CreateLogGroup",
+			"logs:CreateLogStream",
+			"logs:PutLogEvents"
+		  ],
+		  "Resource": [
+			"arn:aws:logs:*:*:log-group:/aws/dms/*"
+		  ]
+		}
+		```
 
 ### 3-2 역할 생성
 - IAM 콘솔
