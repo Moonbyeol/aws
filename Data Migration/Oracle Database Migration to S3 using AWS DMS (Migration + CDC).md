@@ -9,7 +9,13 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 ## 2) S3 버킷 생성
 - 버킷 생성
 
-## 3) IAM 역할 만들기
+## 3) IAM 역할 생성 (최소 권한)
+
+### 3-1. 사용자 정의 정책 생성
+- IAM 콘솔
+- 정책 생성
+	- 
+
 - IAM 콘솔
 - 역할 생성
 	- aws 서비스
@@ -22,7 +28,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 생성
 
 
-## 4) DMS replication instance 만들기
+## 4) DMS replication instance 생성
 - DMS 콘솔
 - replication instance 생성
 	- 이름 : oracle-to-s3-replication
