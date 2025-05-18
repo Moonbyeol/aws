@@ -125,4 +125,8 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- source database endpoint : oracle-source-endpoint
 	- target database endpoint : s3-target-endpoint
 	- mygration type : CDC
+	- task 설정
+		- 대부분 기본값
+		- 데이터 검증 - 필요시
+		- 테스크 로그 - 필요시
 	- 
