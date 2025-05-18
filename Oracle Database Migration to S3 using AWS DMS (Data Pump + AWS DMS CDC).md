@@ -10,3 +10,6 @@ Oracle Database의 데이터를 하이브리드 방식으로 진행
 이를 통해 안정적이고 효율적인 데이터 레이크 환경을 구축
 
 
+# 1. Oracle Data Pump
+
+
