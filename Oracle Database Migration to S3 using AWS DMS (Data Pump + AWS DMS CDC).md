@@ -97,4 +97,9 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- endpoint type : Source
 	- 식별자 : oracle-source-endpoint
 	- 소스 엔진 : oracle
-	- 서버 이름 : 
+	- 엔드포인트 데이터베이스에 엑세스 : 수동으로 엑세스 정보 제공
+		- 서버 이름 : oracle 서버 내부망 ip
+		- 포트 : 1521
+		- 사용자 이름/비밀번호 : oracle 계정
+		- SID : `ORCL` 또는 `XE` (둘 중 실제 사용 중인 것)
+	- 
