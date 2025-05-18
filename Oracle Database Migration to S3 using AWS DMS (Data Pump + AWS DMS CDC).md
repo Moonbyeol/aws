@@ -72,11 +72,29 @@ aws s3 cp export_data.dmp.gz s3://my-bucket/oracle-dumps/
 	- 역할 이름 : dms-s3-role
 	- 생성
 
-## 2) DMS replication instance 만들기
+
+## 2) Oracle DB log 준비
+
+```sql
+ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+```
+
+## 3) DMS replication instance 만들기
 - DMS 콘솔
 - replication instance 생성
 	- 이름 : oracle-to-s3-replication
 	- 인스턴스 클래스 : 선택
 	- 스토리지 : 선택
+	- VPC : VPN이 연결된 VPC 선택
+	- 퍼블릭 엑세스 : 끄기 (사설망만 사용)
+	- 나머지 기본값
+	- 생성
 
 
+## 4) Oracle Endpoint 생성
+- DMS 콘솔
+- Endpoint 생성
+	- endpoint type : Source
+	- 식별자 : oracle-source-endpoint
+	- 소스 엔진 : oracle
+	- 서버 이름 : 
