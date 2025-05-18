@@ -102,4 +102,15 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 		- 포트 : 1521
 		- 사용자 이름/비밀번호 : oracle 계정
 		- SID : `ORCL` 또는 `XE` (둘 중 실제 사용 중인 것)
+	- 연결 테스트
+		- 위에서 생성한 dms instance 선택
+	- 성공 해야 함. 하면 다음으로
+
+
+## 5) S3 Endpoint 생성
+- DMS 콘솔
+- Endpoint 생성
+	- endpoint type : Source
+	- 식별자 : st-target-endpoint
+	- 소스 엔진 : Amazon S3
 	- 
