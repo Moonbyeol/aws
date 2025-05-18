@@ -90,6 +90,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 생성
 
 
+
 ## 4) DMS replication instance 생성
 - DMS 콘솔
 - replication instance 생성
