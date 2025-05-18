@@ -135,3 +135,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 			- schema name : % (전체 선택 의미)
 			- table name : % (전체 선택 의미, 다른 것들은 [참고](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.SelectionTransformation.Wildcards.html))
 			- include
+	- 생성
+- task 생성 후 json 모드에서 포맷, 경로 설정 가능
+
+
