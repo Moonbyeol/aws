@@ -58,7 +58,7 @@ aws s3 cp export_data.dmp.gz s3://my-bucket/oracle-dumps/
 
 
 # DMS CDC
-- 
+
 
 ## 1) IAM 역할 만들기
 - IAM 콘솔
