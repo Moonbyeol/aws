@@ -14,6 +14,7 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 ### 3-1. 사용자 정의 정책 생성
 - IAM 콘솔
 - 정책 생성
+	- 
 	- json
 	```
 	 {
