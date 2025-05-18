@@ -115,4 +115,14 @@ ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 	- 소스 엔진 : Amazon S3
 	- Amazon S3 bucket : 버킷 선택
 	- IAM role for S3 bucket : Use ana existing IAM role 선택
-	- IAM role 선택
+	- 위에서 만들었던 IAM role 선택
+
+## 6) Migration Task 생성
+- DMS 콘솔
+- Database migration task 생성
+	- 식별자 : oracle-cdc-to-s3-task
+	- replication instance : 위에서 생성한 인스턴스
+	- source database endpoint : oracle-source-endpoint
+	- target database endpoint : s3-target-endpoint
+	- mygration type : CDC
+	- 
