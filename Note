@@ -38,3 +38,45 @@ s3.put_object(Bucket=bucket, Key=output_key, Body=out_buffer.getvalue())
 
 
 
+
+cdc lambda
+import boto3
+import urllib.parse
+
+def lambda_handler(event, context):
+    glue = boto3.client('glue')
+    
+    # S3 이벤트에서 파일 경로 추출
+    record = event['Records'][0]
+    bucket = record['s3']['bucket']['name']
+    key = urllib.parse.unquote_plus(record['s3']['object']['key'])
+
+    print(f"Triggered by file: s3://{bucket}/{key}")
+    
+    # Glue Job 파라미터 전달
+    response = glue.start_job_run(
+        JobName='your-job-name',
+        Arguments={
+            '--s3_input_path': f's3://{bucket}/{key}'
+        }
+    )
+
+    print("✅ Started Glue Job:", response['JobRunId'])
+    return {
+        'status': 'started',
+        'job_run_id': response['JobRunId'],
+        'input_file': key
+    }
+
+cdc job
+import sys
+
+# Glue Job Arguments에서 s3_input_path 가져오기
+from awsglue.utils import getResolvedOptions
+args = getResolvedOptions(sys.argv, ['s3_input_path'])
+input_path = args['s3_input_path']
+
+print(f"Input path from Lambda: {input_path}")
+
+
+
