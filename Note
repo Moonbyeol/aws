@@ -1,0 +1,40 @@
+import pandas as pd
+import boto3
+import io
+import os
+
+s3 = boto3.client('s3')
+
+# 1. 원본 파일 경로
+bucket = ''
+input_key = ''
+
+# 2. 원본 파일명 추출
+original_filename = os.path.basename(input_key) 
+base_name, ext = os.path.splitext(original_filename)  
+
+# 3. 데이터 로드
+response = s3.get_object(Bucket=bucket, Key=input_key)
+df = pd.read_parquet(response['Body'])
+
+# 4. 전처리
+df_clean = 
+
+# 5. 파티션 컬럼 추출
+year = str(df_clean.iloc[0]['year'])
+month = str(df_clean.iloc[0]['month']).zfill(2)
+day = str(df_clean.iloc[0]['day']).zfill(2)
+
+# ✅ 6. 새 파일명 구성: 기존 이름 + _processed
+new_filename = f"{base_name}_processed{ext}"
+
+# ✅ 7. 저장 경로
+output_key = f"processed/year={year}/month={month}/day={day}/{new_filename}"
+
+# 8. 저장
+out_buffer = io.BytesIO()
+df_clean.to_parquet(out_buffer, index=False)
+s3.put_object(Bucket=bucket, Key=output_key, Body=out_buffer.getvalue())
+
+
+
