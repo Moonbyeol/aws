@@ -1,3 +1,27 @@
+# 1. op가 'i' 또는 'd'인 행만 필터링
+df_id = df[df['op'].isin(['i', 'd'])]
+
+# 2. 해당 행들에 대해서만 중복 제거
+df_id_deduped = df_id.drop_duplicates(subset='pk_col', keep='first')
+
+# 3. 나머지 op (예: 'u') 행 추출
+df_other = df[~df['op'].isin(['i', 'd'])]
+
+# 4. 합치기
+df_cleaned = pd.concat([df_id_deduped, df_other], ignore_index=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
 import boto3
 import pandas as pd
 import io
