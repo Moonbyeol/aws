@@ -1,3 +1,39 @@
+import boto3
+import pandas as pd
+import io
+
+s3 = boto3.client('s3')
+
+bucket = "your-bucket-name"
+prefix = "your/prefix/path/"  # 폴더 경로 끝에 '/' 포함
+
+# 1. parquet 파일 리스트 수집
+response = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
+files = [obj['Key'] for obj in response.get('Contents', []) if obj['Key'].endswith('.parquet')]
+
+# 2. 각 parquet 파일 읽어서 병합
+dfs = []
+for key in files:
+    obj = s3.get_object(Bucket=bucket, Key=key)
+    df_part = pd.read_parquet(io.BytesIO(obj['Body'].read()))
+    dfs.append(df_part)
+
+# 3. 하나의 DataFrame으로 통합
+df = pd.concat(dfs, ignore_index=True)
+
+# 4. timestamp 오류 방지 처리
+df['timestamp_col'] = pd.to_datetime(df['timestamp_col'], errors='coerce')
+
+
+
+
+
+
+
+
+
+
+
 import awswrangler as wr
 
 # Glue 카탈로그에서 S3 경로를 확인하거나 직접 경로 입력
