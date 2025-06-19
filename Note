@@ -1,3 +1,37 @@
+from datetime import datetime, timedelta
+
+filename = "20250618-043358364"
+
+# 날짜, 시간, 밀리초 분리
+date_utc = filename[:8]
+time_utc = filename[9:15]
+ms_part = filename[15:]
+
+# UTC datetime으로 파싱
+dt_utc = datetime.strptime(date_utc + time_utc, "%Y%m%d%H%M%S")
+
+# KST로 변환
+dt_kst = dt_utc + timedelta(hours=9)
+
+# 다시 파일명 형식으로 조립
+new_filename = dt_kst.strftime("%Y%m%d-%H%M%S") + ms_part
+
+print(new_filename)  # 예: 20250618-133358364
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 'i'만 따로 처리
 df_i = df[df['op'] == 'i']
 df_i_deduped = df_i.drop_duplicates(subset='pk_col', keep='first')
