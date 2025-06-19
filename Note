@@ -1,3 +1,16 @@
+import awswrangler as wr
+
+# Glue 카탈로그에서 S3 경로를 확인하거나 직접 경로 입력
+s3_path = "s3://your-bucket/your-folder/"  # 예: s3://my-bucket/data/year=2025/month=06/day=18/
+
+# S3 경로에 있는 모든 Parquet 파일을 하나의 DataFrame으로 읽기
+df = wr.s3.read_parquet(path=s3_path, dataset=True)
+
+# 오류 방지를 위한 timestamp 변환
+df['timestamp_col'] = pd.to_datetime(df['timestamp_col'], errors='coerce')
+
+
+
 import boto3
 import io
 import pandas as pd
