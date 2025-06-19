@@ -1,3 +1,45 @@
+import boto3
+import io
+import pandas as pd
+
+s3 = boto3.client('s3')
+
+# 1. 입력 정보
+bucket = 'your-bucket'
+input_key = 'raw/schema=mine/table=maole/year=2025/month=06/day=18/yourfile.parquet'
+
+# 2. 내가 지정할 새 경로 앞부분
+custom_prefix = 'processed-data'
+
+# 3. table=부터 추출
+split_parts = input_key.split('/')
+
+# 'table='이 시작되는 인덱스 찾기
+table_index = next(i for i, part in enumerate(split_parts) if part.startswith('table='))
+
+# 'table=...'부터 끝까지 이어붙이기
+partition_and_filename = '/'.join(split_parts[table_index:])
+
+# 4. 최종 output_key
+output_key = f"{custom_prefix}/{partition_and_filename}"
+
+# 5. 읽고 처리
+response = s3.get_object(Bucket=bucket, Key=input_key)
+df = pd.read_parquet(response['Body'])
+df_clean = df.dropna()
+
+# 6. 저장
+out_buffer = io.BytesIO()
+df_clean.to_parquet(out_buffer, index=False)
+s3.put_object(Bucket=bucket, Key=output_key, Body=out_buffer.getvalue())
+
+print(f"✅ 저장 완료: s3://{bucket}/{output_key}")
+
+
+---
+
+
+
 import pandas as pd
 import boto3
 import io
